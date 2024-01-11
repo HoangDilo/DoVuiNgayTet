@@ -11,5 +11,5 @@ CREATE TABLE "User" (
     Password varchar(16) NOT NULL CHECK (LEN(Password) >= 8),
     IsAdmin bit NOT NULL,
     AvatarUrl nvarchar(300) NOT NULL,
-    Link varchar(255) NOT NULL,
+    Link varchar(255),
 );
