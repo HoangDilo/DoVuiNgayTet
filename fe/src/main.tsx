@@ -4,6 +4,7 @@ import App from './App.tsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import './index.scss'
 import Root from './Root.tsx'
+import Login from './Login/Login.tsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
         element={<App />}
       />
       <Route path='/abc' element={<div>abc</div>}/>
+      <Route path='/login' element={<Login />}/>
     </Route>
   )
 )
