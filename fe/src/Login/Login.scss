@@ -28,24 +28,28 @@ body{
     margin-top: 20px;
 }
 
+.Login-container-wrapper {
+    padding: 0px 0px;
+    position: relative;
+}
+
 .Login-container{
     background-color: red;
     width: 445px;
     align-self: center;
+    padding: 62px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: height 0.5s ease;
 }
 
 .Login-roll{
-    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    transition: max-height 1s;
 }
 
 .Input-container{
@@ -76,7 +80,7 @@ body{
     height: 100px;
     background-size: cover;
     position: absolute;
-    top: -96px;
+    top: -34px;
     right: -80px;
 }
 .Login-bottom-roll{
@@ -86,10 +90,14 @@ body{
     background-size: cover;
     transform: rotateX(180deg);
     position: absolute;
-    bottom: -96px;
+    bottom: -34px;
     left: -75px;
 }
 
 .Login-roll-close{
-    max-height: 50px;
+    height: 0px;
+}
+
+.Login-roll-open {
+    height: 378px;
 }
