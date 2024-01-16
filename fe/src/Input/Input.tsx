@@ -1,5 +1,5 @@
 import { useState, useEffect, KeyboardEvent } from "react";
-import './Input.css'
+import './Input.scss'
 
 function Input({ value, label, type, icon, setData, onSubmit }: { value: string, label: string, type: string, icon: string, setData: (data: string) => void, onSubmit: () => void }) {
     const [internalType, setInternalType] = useState("")
@@ -29,7 +29,7 @@ function Input({ value, label, type, icon, setData, onSubmit }: { value: string,
     return (
         <>
             <div className="Input-container">
-                <div className={`label-${label}`}>{label}</div>
+                <div className="Input-label">{label}</div>
                 <div className={`${icon}`}></div>
                 <input 
                     type={internalType}

@@ -5,6 +5,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import './index.scss'
 import Root from './Root.tsx'
 import Login from './Login/Login.tsx'
+import SignUp from './SignUp/SignUp.tsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       />
       <Route path='/abc' element={<div>abc</div>}/>
       <Route path='/login' element={<Login />}/>
+      <Route path='/signup' element={<SignUp />}/>
     </Route>
   )
 )

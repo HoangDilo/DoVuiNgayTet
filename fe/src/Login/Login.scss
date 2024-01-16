@@ -12,7 +12,9 @@ $cuonso: './../assets/cuonso.png';
     width: 100%;
     height: 100vh;
     position: absolute;
-    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 body{
     margin: 0px;
@@ -27,20 +29,23 @@ body{
 }
 
 .Login-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
     background-color: red;
-    width: 500px;
+    width: 445px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .Login-roll{
+    height: fit-content;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    position: relative;
+    transition: max-height 1s;
 }
 
 .Input-container{
@@ -48,14 +53,21 @@ body{
 }
 
 .Login-forgot-pass{
-    left: 0px;
+    font-size: 13px;
+    color: white;
 }
 
 .Login-submit{
     width: 259px;
     height: 30px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.Login-to-signup{
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: white;
 }
 
 .Login-head-roll{
@@ -63,6 +75,9 @@ body{
     width: 600px;
     height: 100px;
     background-size: cover;
+    position: absolute;
+    top: -96px;
+    right: -80px;
 }
 .Login-bottom-roll{
     background-image: url($cuonso);
@@ -70,4 +85,11 @@ body{
     height: 100px;
     background-size: cover;
     transform: rotateX(180deg);
+    position: absolute;
+    bottom: -96px;
+    left: -75px;
+}
+
+.Login-roll-close{
+    max-height: 50px;
 }

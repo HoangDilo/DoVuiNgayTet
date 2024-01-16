@@ -1,19 +1,29 @@
 import './Login.scss'
-import { useState } from 'react';
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Input from '../Input/Input'
 
 function Login() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    function handleSubmit() {
+    const navigate = useNavigate()
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [isMounted, setIsMounted] = useState(false)
 
+    const handleSubmit = () => {}
+
+    const handleNavigateSignUp = () => {
+        navigate('/signup')
     }
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     return (
         <>
 
             <div className="Login-background">
-                <div className="Login-roll">
+                <div className={`Login-roll ${!isMounted ? 'Login-roll-close' : ''}`}>
                     <div className="Login-head-roll"></div>
                     <div className="Login-container">
                         <div className="Login-text">Login</div>
@@ -30,11 +40,12 @@ function Login() {
                             label='password'
                             type='password'
                             icon=''
-                            setData={setUsername}
+                            setData={setPassword}
                             onSubmit={handleSubmit}
                         />
                         <div className="Login-forgot-pass">forgot password?</div>
                         <button className='Login-submit'>Login</button>
+                        <div className="Login-to-signup">Dont have an account? <span onClick={handleNavigateSignUp}>Create one here!</span></div>
                     </div>
                     <div className="Login-bottom-roll"></div>
                 </div>
