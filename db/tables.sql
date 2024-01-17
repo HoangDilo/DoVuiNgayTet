@@ -10,7 +10,6 @@ CREATE TABLE "User" (
     Username varchar(16) NOT NULL UNIQUE CHECK (LEN(Username) >= 8),
     Password varchar(16) NOT NULL CHECK (LEN(Password) >= 8),
     IsAdmin bit NOT NULL,
-    AvatarUrl nvarchar(300) NOT NULL,
     Link varchar(255),
     Money int,
 );
@@ -21,8 +20,8 @@ CREATE TABLE Questions (
 );
 
 CREATE TABLE Answers (
-    AnswerID bigint IDENTITY(1,1) PRIMARY KEY,
-    QuestionID bigint NOT NULL FOREIGN KEY REFERENCES Questions(QuestionID),
+    AnswerId bigint IDENTITY(1,1) PRIMARY KEY,
+    QuestionId bigint NOT NULL FOREIGN KEY REFERENCES Questions(QuestionId),
     Answer nvarchar(255) NOT NULL,
     IsCorrect bit NOT NULL,
 );
