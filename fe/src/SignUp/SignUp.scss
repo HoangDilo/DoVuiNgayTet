@@ -5,3 +5,16 @@
 .Sign-up-roll-open {
     height: 450px;
 }
+
+.Sign-up-container{
+    background-color: red;
+    width: 442px;
+    align-self: center;
+    padding: 56px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.45s ease;
+}

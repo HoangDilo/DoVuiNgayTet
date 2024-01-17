@@ -36,7 +36,7 @@ function SignUp() {
                     <div className="Login-container-wrapper">
                         <div className="Login-head-roll"></div>
                         <div
-                            className={`Login-container ${!isMounted ? "Sign-up-roll-close" : "Sign-up-roll-open"}`}>
+                            className={`Sign-up-container ${!isMounted ? "Sign-up-roll-close" : "Sign-up-roll-open"}`}>
                             <div className="Login-text">Sign Up</div>
                             <Input
                                 value={username}

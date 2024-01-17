@@ -31,13 +31,15 @@ body{
 .Login-container-wrapper {
     padding: 0px 0px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .Login-container{
     background-color: red;
-    width: 445px;
+    width: 442px;
     align-self: center;
-    padding: 62px 0px;
+    padding: 56px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,8 +82,8 @@ body{
     height: 100px;
     background-size: cover;
     position: absolute;
-    top: -34px;
-    right: -80px;
+    top: -40px;
+    left: -77px;
 }
 .Login-bottom-roll{
     background-image: url($cuonso);
@@ -90,8 +92,8 @@ body{
     background-size: cover;
     transform: rotateX(180deg);
     position: absolute;
-    bottom: -34px;
-    left: -75px;
+    bottom: -40px;
+    left: -77px;
 }
 
 .Login-roll-close{
