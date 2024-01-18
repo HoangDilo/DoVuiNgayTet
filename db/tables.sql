@@ -25,3 +25,4 @@ CREATE TABLE Answers (
     Answer nvarchar(255) NOT NULL,
     IsCorrect bit NOT NULL,
 );
+
