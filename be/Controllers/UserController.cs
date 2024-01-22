@@ -52,6 +52,7 @@ namespace be.Controllers
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
+                IsAdmin = user.IsAdmin,
             });
         }
     }

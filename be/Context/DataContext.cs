@@ -13,5 +13,7 @@ namespace be.Context
         {
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Answers> Answers { get; set; }
     }
 }
