@@ -1,7 +1,7 @@
 import './SignUp.scss'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Input from '../Input/Input'
+import Input from '../../components/common/Input/Input'
 
 function SignUp() {
     const navigate = useNavigate();

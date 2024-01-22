@@ -1,8 +1,8 @@
 import "./Login.scss";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../Input/Input";
-import { login } from "../api/auth";
+import Input from "../../components/common/Input/Input";
+import { login } from "../../api/auth";
 
 function Login() {
   const navigate = useNavigate();
