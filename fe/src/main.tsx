@@ -7,6 +7,8 @@ import Root from './Root.tsx'
 import Login from './Login/Login.tsx'
 import SignUp from './SignUp/SignUp.tsx'
 
+
+import { API_URL } from './constants/api.constant.ts'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
