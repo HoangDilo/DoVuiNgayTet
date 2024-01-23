@@ -29,7 +29,7 @@ function Input({ value, label, type, icon, setData, onSubmit }: { value: string,
     return (
         <>
             <div className="Input-container">
-                <div className="Input-label">{label}</div>
+                {/*<div className="Input-label">{label}</div>*/}
                 <div className={`${icon}`}></div>
                 <input 
                     type={internalType}
