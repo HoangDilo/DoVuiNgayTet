@@ -62,7 +62,7 @@ function Login() {
               <Button label="Login" type="chit" onSubmit={() => {}}/>
               <div className="Login-to-signup">
                 Dont have an account?{" "}
-                <span onClick={handleNavigateSignUp}>Create one here!</span>
+                <span className="Login-navigate" onClick={handleNavigateSignUp}>Create one here!</span>
               </div>
             </div>
             <div className="Login-bottom-roll"></div>
