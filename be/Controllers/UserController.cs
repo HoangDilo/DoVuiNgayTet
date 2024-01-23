@@ -41,7 +41,7 @@ namespace be.Controllers
                 };
             _context.User.Add(newUser);
             await _context.SaveChangesAsync();
-            return Ok();
+            return Ok(new {message = "Register successfully"});
         }
 
         [HttpPost("Login")]

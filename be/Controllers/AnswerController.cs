@@ -47,7 +47,7 @@ namespace be.Controllers
                 answer.IsCorrect = input.IsCorrect;
                 await _context.SaveChangesAsync();
             }
-            return Ok(new {message = "Edit Question successfully!"});
+            return Ok(new {message = "Edit Answer successfully!"});
         }
     }
 }
