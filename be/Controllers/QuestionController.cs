@@ -21,6 +21,7 @@ namespace be.Controllers
             _context = context;
             _answerController = answerController;
         }
+
         [HttpGet("QuestionList")]
         public async Task<ActionResult<List<QuestionListOutputDto>>> QuestionList()
         {
@@ -38,6 +39,7 @@ namespace be.Controllers
 
             return question;
         }
+
         [HttpPost("CreateQuestionAndAnswers")]
         public async Task<ActionResult> CreateQuestionAndAnswers([FromBody] QuestionAndAnswersInputDto input)
         {
@@ -60,6 +62,24 @@ namespace be.Controllers
             }
             return Ok(new {message = "Create Question successfully!"});
         }
+
+        [HttpPut("EditQuestion")]
+        public async Task<ActionResult> EditQuestion([FromBody] QuestionEditInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "User not found!"});
+            if (user.IsAdmin == false ) return BadRequest(new {message = "User is not an admin!"});
+            var question = await _context.Question.SingleOrDefaultAsync(q => q.QuestionId == input.QuestionId);
+            if (question == null) return BadRequest(new {message = "Question not found!"});
+            if (string.IsNullOrWhiteSpace(input.QuestionText)) return BadRequest(new {message = "Invalid Text!"});
+            else
+            {
+                question.QuestionText = input.QuestionText;
+                await _context.SaveChangesAsync();
+            }
+            return Ok(new {message = "Edit Question successfully!"});
+        }
+
         [HttpDelete("DeleteQuestion")]
         public async Task<ActionResult> DeleteQuestion([FromBody] QuestionDeleteInputDto input)
         {

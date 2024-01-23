@@ -32,5 +32,22 @@ namespace be.Controllers
             }).ToListAsync();
             return answer;
         }
+
+        [HttpPut("EditAnswer")]
+        public async Task<ActionResult> EditAnswer([FromBody] AnswerEditInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "User not found!"});
+            if (user.IsAdmin == false ) return BadRequest(new {message = "User is not an admin!"});
+            var answer = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerText == input.AnswerText);
+            if (answer == null) return BadRequest(new {message = "Answer not found!"});
+            if (string.IsNullOrWhiteSpace(input.AnswerText)) return BadRequest(new {message = "Invalid Text!"});
+            else
+            {
+                answer.AnswerText = input.AnswerText;
+                await _context.SaveChangesAsync();
+            }
+            return Ok(new {message = "Edit Question successfully!"});
+        }
     }
 }
