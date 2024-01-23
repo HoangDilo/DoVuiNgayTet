@@ -10,6 +10,5 @@ namespace be.Model.Dto
     {
         [Required][StringLength(16, MinimumLength = 8)] public string Username { get; set; }
         [Required][StringLength(16, MinimumLength = 8)] public string Password { get; set; }
-        public string Link { get; set; }
     }
 }

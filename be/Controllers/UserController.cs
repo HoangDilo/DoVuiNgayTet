@@ -36,7 +36,6 @@ namespace be.Controllers
                 {
                     Username = input.Username.ToLower(),
                     Password = input.Password,
-                    Link = input.Link,
                     IsAdmin = false,
                 };
             _context.User.Add(newUser);
