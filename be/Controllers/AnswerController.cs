@@ -40,11 +40,11 @@ namespace be.Controllers
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.IsAdmin == false ) return BadRequest(new {message = "User is not an admin!"});
             var answer = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerText == input.AnswerText);
-            if (answer == null) return BadRequest(new {message = "Answer not found!"});
             if (string.IsNullOrWhiteSpace(input.AnswerText)) return BadRequest(new {message = "Invalid Text!"});
             else
             {
                 answer.AnswerText = input.AnswerText;
+                answer.IsCorrect = input.IsCorrect;
                 await _context.SaveChangesAsync();
             }
             return Ok(new {message = "Edit Question successfully!"});

@@ -70,7 +70,6 @@ namespace be.Controllers
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.IsAdmin == false ) return BadRequest(new {message = "User is not an admin!"});
             var question = await _context.Question.SingleOrDefaultAsync(q => q.QuestionId == input.QuestionId);
-            if (question == null) return BadRequest(new {message = "Question not found!"});
             if (string.IsNullOrWhiteSpace(input.QuestionText)) return BadRequest(new {message = "Invalid Text!"});
             else
             {
