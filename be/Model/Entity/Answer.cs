@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace be.Model.Entity
 {
-    public class Answers
+    public class Answer
     {
         public long AnswerId { get; set; }
         public long QuestionId { get; set; }
-        public string Answer { get; set; }
+        public string AnswerText { get; set; }
         public bool IsCorrect { get; set; }
+        public Question Question { get; set; }
     }
 }

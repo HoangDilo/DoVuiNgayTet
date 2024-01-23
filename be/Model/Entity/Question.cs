@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace be.Model.Entity
 {
-    public class Questions
+    public class Question
     {
         public long QuestionId { get; set; }
-        public string Quest { get; set; }
+        public string QuestionText { get; set; }
+        public List<Answer> Answers { get; set; }
     }
 }
