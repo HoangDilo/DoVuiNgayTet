@@ -1,20 +1,21 @@
-import "./Login.scss";
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Input from "../Input/Input";
+import './SignUp.scss'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import Input from '../../components/common/Input/Input'
 
-function Login() {
+function SignUp() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("")
     const [isMounted, setIsMounted] = useState(false);
 
     const handleSubmit = () => { };
 
-    const handleNavigateSignUp = () => {
+    const handleNavigateLogin = () => {
         setIsMounted(false)
         setTimeout(() => {
-            navigate("/signup");
+            navigate("/login");
         }, 500);
     };
 
@@ -35,10 +36,8 @@ function Login() {
                     <div className="Login-container-wrapper">
                         <div className="Login-head-roll"></div>
                         <div
-                            className={`Login-container ${!isMounted ? "Login-roll-close" : "Login-roll-open"
-                                }`}
-                        >
-                            <div className="Login-text">Login</div>
+                            className={`Sign-up-container ${!isMounted ? "Sign-up-roll-close" : "Sign-up-roll-open"}`}>
+                            <div className="Login-text">Sign Up</div>
                             <Input
                                 value={username}
                                 label="username"
@@ -55,12 +54,16 @@ function Login() {
                                 setData={setPassword}
                                 onSubmit={handleSubmit}
                             />
-                            <div className="Login-forgot-pass">forgot password?</div>
-                            <button className="Login-submit">Login</button>
-                            <div className="Login-to-signup">
-                                Dont have an account?{" "}
-                                <span onClick={handleNavigateSignUp}>Create one here!</span>
-                            </div>
+                            <Input
+                                value={repeatPassword}
+                                label='repeat password'
+                                type='password'
+                                icon=''
+                                setData={setRepeatPassword}
+                                onSubmit={handleSubmit}
+                            />
+                            <button className='Login-submit'>Sign Up</button>
+                            <div className="Login-to-signup">Already had an account? <span onClick={handleNavigateLogin}>Login here!</span></div>
                         </div>
                         <div className="Login-bottom-roll"></div>
                     </div>
@@ -70,4 +73,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default SignUp
