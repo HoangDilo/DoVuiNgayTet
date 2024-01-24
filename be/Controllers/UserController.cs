@@ -36,11 +36,12 @@ namespace be.Controllers
                 {
                     Username = input.Username.ToLower(),
                     Password = input.Password,
+                    Link = input.Link,
                     IsAdmin = false,
                 };
             _context.User.Add(newUser);
             await _context.SaveChangesAsync();
-            return Ok();
+            return Ok(new {message = "Register successfully"});
         }
 
         [HttpPost("Login")]
@@ -52,6 +53,7 @@ namespace be.Controllers
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
+                IsAdmin = user.IsAdmin,
             });
         }
     }

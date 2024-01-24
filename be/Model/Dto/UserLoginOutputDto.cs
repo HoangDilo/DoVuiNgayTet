@@ -8,5 +8,6 @@ namespace be.Model.Dto
     public class UserLoginOutputDto
     {
         public string Username { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

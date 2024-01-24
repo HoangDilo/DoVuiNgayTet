@@ -7,7 +7,7 @@ function Button({ label, type, onSubmit }: { label: string, type: string, onSubm
         <>
             <div className="Button-container">
                 {/*<div className="Input-label">{label}</div>*/}
-                <button onClick={() => onSubmit()}>{label}</button>
+                <button>{label}</button>
             </div>
         </>
     )

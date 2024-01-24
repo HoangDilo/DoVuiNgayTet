@@ -2,7 +2,6 @@ import './SignUp.scss'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../components/common/Input/Input'
-import { signup } from '../../api/auth';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -11,23 +10,7 @@ function SignUp() {
     const [repeatPassword, setRepeatPassword] = useState("")
     const [isMounted, setIsMounted] = useState(false);
 
-    const handleSubmit = async () => {
-        if(password != repeatPassword){
-            alert("mat khau phai nhu nhau")
-        }
-        const response = await signup(username, password)
-        response.json().then(data => {
-          if(response.status === 200){
-            localStorage.setItem("userData", JSON.stringify(data))
-            console.log('them thanh cong')
-            navigate('/login')
-          }
-          else{
-            console.log("ko thanh cong")
-          }
-        })
-    
-      };
+    const handleSubmit = () => { };
 
     const handleNavigateLogin = () => {
         setIsMounted(false)
@@ -79,7 +62,7 @@ function SignUp() {
                                 setData={setRepeatPassword}
                                 onSubmit={handleSubmit}
                             />
-                            <button className='Login-submit' onClick={() => handleSubmit()}>Sign Up</button>
+                            <button className='Login-submit'>Sign Up</button>
                             <div className="Login-to-signup">Already had an account? <span onClick={handleNavigateLogin}>Login here!</span></div>
                         </div>
                         <div className="Login-bottom-roll"></div>
