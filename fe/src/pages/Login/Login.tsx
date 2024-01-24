@@ -11,7 +11,17 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isMounted, setIsMounted] = useState(false);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    const response = await login(username, password)
+    response.json().then(data => {
+      if(response.status === 200){
+        localStorage.setItem("userData", JSON.stringify(data))
+        console.log('chit')
+        navigate('/')
+      }
+    })
+
+  };
 
   const handleNavigateSignUp = () => {
     setIsMounted(false);
@@ -59,7 +69,7 @@ function Login() {
                 onSubmit={handleSubmit}
               />
               <div className="Login-forgot-pass">forgot password?</div>
-              <Button label="Login" type="chit" onSubmit={() => {}}/>
+              <Button label="Login" type="chit" onSubmit={handleSubmit}/>
               <div className="Login-to-signup">
                 Dont have an account?{" "}
                 <span className="Login-navigate" onClick={handleNavigateSignUp}>Create one here!</span>
