@@ -14,6 +14,8 @@ function Login() {
   const handleSubmit = async () => {
     const response = await login(username, password)
     response.json().then(data => {
+      console.log(data);
+      
       if(response.status === 200){
         localStorage.setItem("userData", JSON.stringify(data))
         console.log('chit')
