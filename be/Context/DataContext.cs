@@ -13,14 +13,5 @@ namespace be.Context
         {
         }
         public DbSet<User> User { get; set; }
-        public DbSet<Question> Question { get; set; }
-        public DbSet<Answer> Answer { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Question>()
-            .HasMany(q => q.Answers)
-            .WithOne(a => a.Question)
-            .HasForeignKey(a => a.QuestionId);
-        }
     }
 }

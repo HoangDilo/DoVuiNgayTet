@@ -14,15 +14,15 @@ CREATE TABLE "User" (
     Money int,
 );
 
-CREATE TABLE Question (
+CREATE TABLE Questions (
     QuestionId bigint IDENTITY(1,1) PRIMARY KEY,
-    QuestionText nvarchar(255) NOT NULL,
+    Quest nvarchar(255) NOT NULL,
 );
 
-CREATE TABLE Answer (
+CREATE TABLE Answers (
     AnswerId bigint IDENTITY(1,1) PRIMARY KEY,
-    QuestionId bigint NOT NULL FOREIGN KEY REFERENCES Question(QuestionId),
-    AnswerText nvarchar(255) NOT NULL,
+    QuestionId bigint NOT NULL FOREIGN KEY REFERENCES Questions(QuestionId),
+    Answer nvarchar(255) NOT NULL,
     IsCorrect bit NOT NULL,
 );
 

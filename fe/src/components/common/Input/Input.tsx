@@ -3,6 +3,7 @@ import './Input.scss'
 
 function Input({ value, label, type, icon, setData, onSubmit }: { value: string, label: string, type: string, icon: string, setData: (data: string) => void, onSubmit: () => void }) {
     const [internalType, setInternalType] = useState("")
+    const [inputValue, setInputValue] = useState("")
     const [internalErrorMessage, setInternalErrorMessage] = useState("")
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -15,6 +16,16 @@ function Input({ value, label, type, icon, setData, onSubmit }: { value: string,
         setInternalType(type);
     }, [type])
 
+    useEffect(() => {
+        setData(inputValue);
+    }, [inputValue])
+
+    useEffect(() => {
+        if (value) {
+            setInputValue(value)
+        }
+    }, [value])
+
     return (
         <>
             <div className="Input-container">
@@ -24,7 +35,6 @@ function Input({ value, label, type, icon, setData, onSubmit }: { value: string,
                     type={internalType}
                     id={`input-${label}`}
                     className={`${icon && 'isIcon'} is${type}`}
-                    value={value}
                     placeholder={label}
                     onChange={(event) => setData(event.target.value)}
                     onKeyDown={(event) => handleKeyDown(event)}/>
