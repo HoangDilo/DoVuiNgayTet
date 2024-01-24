@@ -56,7 +56,7 @@ function Login() {
               <div className="Login-text">Login</div>
               <Input
                 value={username}
-                label="username"
+                label="Username"
                 type="text"
                 icon=""
                 setData={setUsername}
@@ -64,13 +64,13 @@ function Login() {
               />
               <Input
                 value={password}
-                label="password"
+                label="Password"
                 type="password"
                 icon=""
                 setData={setPassword}
                 onSubmit={handleSubmit}
               />
-              <div className="Login-forgot-pass">forgot password?</div>
+              <div className="Login-forgot-pass">Forgot password?</div>
               <Button label="Login" type="chit" onSubmit={handleSubmit}/>
               <div className="Login-to-signup">
                 Dont have an account?{" "}
