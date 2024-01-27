@@ -53,6 +53,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: transform 0.7s ease;
 }
 
 .Input-container{
@@ -103,3 +104,6 @@ body{
     cursor: pointer;
 }
 
+.Rotate-90-deg-animation{
+    transform: rotate(90deg);
+}

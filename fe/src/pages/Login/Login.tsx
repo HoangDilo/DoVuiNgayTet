@@ -1,15 +1,16 @@
 import "./Login.scss";
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/common/Input/Input";
-import { login } from "../../api/auth";
-import Button from "../../components/common/Button/Button";
+import { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import Input from "../../components/common/Input/Input"
+import { login } from "../../api/auth"
+import Button from "../../components/common/Button/Button"
 
 function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isMounted, setIsMounted] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [isMounted, setIsMounted] = useState(false)
+  const [isNavigated, setIsNavigated] = useState(false)
 
   const handleSubmit = async () => {
     const response = await login(username, password)
@@ -19,7 +20,13 @@ function Login() {
       if(response.status === 200){
         localStorage.setItem("userData", JSON.stringify(data))
         console.log('chit')
-        navigate('/')
+        setIsMounted(false)
+        setTimeout(() => {
+          setIsNavigated(true)
+        }, 750)
+        setTimeout(() => {
+          navigate('/')
+        }, 1500)
       }
     })
 
@@ -45,7 +52,7 @@ function Login() {
   return (
     <>
       <div className="Login-background">
-        <div className={`Login-roll`}>
+        <div className={`Login-roll ${!isNavigated ? "" : "Rotate-90-deg-animation"}`}>
           <div className="Login-container-wrapper">
             <div className="Login-head-roll"></div>
             <div
