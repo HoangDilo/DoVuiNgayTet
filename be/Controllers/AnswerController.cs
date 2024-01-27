@@ -33,6 +33,19 @@ namespace be.Controllers
             return answer;
         }
 
+        [NonAction]
+        public async Task<List<AnswerListOutputDto>> AnswerByQuestionId(long QuestionId)
+        {
+            var answer = await (from Answer in _context.Answer
+            where Answer.QuestionId == QuestionId
+            select new AnswerListOutputDto()
+            {
+                AnswerId = Answer.AnswerId,
+                AnswerText = Answer.AnswerText,
+            }).ToListAsync();
+            return answer;
+        }
+
         [HttpPut("EditAnswer")]
         public async Task<ActionResult> EditAnswer([FromBody] AnswerEditInputDto input)
         {

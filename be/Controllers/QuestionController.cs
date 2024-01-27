@@ -117,7 +117,7 @@ namespace be.Controllers
 
             foreach (var q in question)
             {
-                q.AnswerList = await _answerController.SearchByQuestionId(q.QuestionId);
+                q.AnswerList = await _answerController.AnswerByQuestionId(q.QuestionId);
                 q.AnswerList = q.AnswerList.OrderBy(x => Guid.NewGuid()).ToList();
             }
 
