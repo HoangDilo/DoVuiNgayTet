@@ -46,6 +46,10 @@ namespace be.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.IsAdmin == false ) return BadRequest(new {message = "User not a admin!"});
+            if (input.Answers == null || input.Answers.Count != 4 || input.Answers.Count(a => a.IsCorrect) != 1)
+            {
+                return BadRequest(new { message = "Invalid number of answers or incorrect answer count!" });
+            }
             else
             {
                 var newQuestion = new Question
@@ -95,6 +99,50 @@ namespace be.Controllers
                 await _context.SaveChangesAsync();
             }
             return Ok(new {message = "Delete Question successfully!"});
+        }
+
+        [HttpGet("GetRandomQuestion")]
+        public async Task<ActionResult<List<QuestionRandomOutputDto>>> RandomQuestion([FromQuery] QuestionRandomInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
+            var question = await _context.Question
+            .OrderBy(x => Guid.NewGuid())
+            .Take(5)
+            .Select(question => new QuestionRandomOutputDto
+            {
+                QuestionId = question.QuestionId,
+                QuestionText = question.QuestionText,
+            })
+            .ToListAsync();
+
+            foreach (var q in question)
+            {
+                q.AnswerList = await _answerController.SearchByQuestionId(q.QuestionId);
+                q.AnswerList = q.AnswerList.OrderBy(x => Guid.NewGuid()).ToList();
+            }
+
+            return question;
+        }
+
+        [HttpGet("Question")]
+        public async Task<ActionResult> Question([FromQuery] QuestionAnsweredInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "User not found!"});
+            var question = await _context.Question.SingleOrDefaultAsync(q => q.QuestionId == input.QuestionId);
+            if (question == null) return BadRequest(new {message = "Question not found!"});
+            var answer = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerId == input.AnswerId);
+            if (answer == null) return BadRequest(new {message = "Answer not found!"});
+            bool isCorrectAnswer = answer.IsCorrect;
+            if (isCorrectAnswer)
+            {
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "Correct answer!" });
+            }
+            else
+            {
+                return Ok(new { message = "Incorrect answer!" });
+            }
         }
     }
 }

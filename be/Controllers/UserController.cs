@@ -24,13 +24,21 @@ namespace be.Controllers
         {
             return await _context.User.AnyAsync(x => x.Username == Username.ToLower());
         }
-
+        private async Task<bool> LinkExists(string Link)
+        {
+            return await _context.User.AnyAsync(x => x.Link == Link.ToLower());
+        }
+        
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] UserRegisterInputDto input)
         {
             if (await UserExists(input.Username))
             {
                 return BadRequest(new {message = "Username already in use!"});
+            }
+            if (await LinkExists(input.Link))
+            {
+                return BadRequest(new {message = "This profile already in use!"});
             }
             var newUser = new User()
                 {
