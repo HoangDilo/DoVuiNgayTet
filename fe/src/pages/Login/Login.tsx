@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/common/Input/Input";
 import { login } from "../../api/auth";
+import Button from "../../components/common/Button/Button";
 
 function Login() {
   const navigate = useNavigate();
@@ -10,7 +11,17 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isMounted, setIsMounted] = useState(false);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    const response = await login(username, password)
+    response.json().then(data => {
+      if(response.status === 200){
+        localStorage.setItem("userData", JSON.stringify(data))
+        console.log('chit')
+        navigate('/')
+      }
+    })
+
+  };
 
   const handleNavigateSignUp = () => {
     setIsMounted(false);
@@ -58,10 +69,10 @@ function Login() {
                 onSubmit={handleSubmit}
               />
               <div className="Login-forgot-pass">forgot password?</div>
-              <button className="Login-submit">Login</button>
+              <Button label="Login" type="chit" onSubmit={handleSubmit}/>
               <div className="Login-to-signup">
                 Dont have an account?{" "}
-                <span onClick={handleNavigateSignUp}>Create one here!</span>
+                <span className="Login-navigate" onClick={handleNavigateSignUp}>Create one here!</span>
               </div>
             </div>
             <div className="Login-bottom-roll"></div>
