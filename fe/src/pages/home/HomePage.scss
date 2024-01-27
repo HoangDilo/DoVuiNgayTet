@@ -1,0 +1,78 @@
+@import '@/styles/variables.scss';
+
+.home-background{
+    background-image: url($background);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.home-answers{
+    width: 700px;
+    gap: 0px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home-question-container-wrapper{
+    padding: 0px 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.home-roll{
+    display: flex;
+    justify-content: center;
+}
+
+.home-left-roll{
+    background-image: url($cuonso);
+    width: 600px;
+    height: 100px;
+    background-size: cover;
+    position: absolute;
+    transform: rotate(90deg);
+    right: -345px;
+}
+
+.home-right-roll{
+    background-image: url($cuonso);
+    width: 600px;
+    height: 100px;
+    background-size: cover;
+    position: absolute;
+    transform: rotate(270deg);
+    left: -345px;
+}
+
+.home-question-container{
+    width: 0px;
+    height: 440px;
+    background-color: rgb(175, 0, 0);
+    overflow: hidden;
+    transition: width 0.7s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.home-roll-close{
+    width: 0px;
+}
+
+.home-roll-open {
+    width: 900px;
+}
+
+.home-questions{
+    color: gold;
+    font-size: 25px;
+}
