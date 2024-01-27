@@ -33,30 +33,35 @@
 
 .home-left-roll{
     background-image: url($cuonso);
-    width: 550px;
+    width: 600px;
     height: 100px;
     background-size: cover;
     position: absolute;
     transform: rotate(90deg);
-    right: -315px;
+    right: -345px;
 }
 
 .home-right-roll{
     background-image: url($cuonso);
-    width: 550px;
+    width: 600px;
     height: 100px;
     background-size: cover;
     position: absolute;
     transform: rotate(270deg);
-    left: -315px;
+    left: -345px;
 }
 
 .home-question-container{
     width: 0px;
-    height: 400px;
+    height: 440px;
     background-color: rgb(175, 0, 0);
     overflow: hidden;
     transition: width 0.7s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0px;
 }
 
 .home-roll-close{
@@ -65,4 +70,9 @@
 
 .home-roll-open {
     width: 900px;
+}
+
+.home-questions{
+    color: gold;
+    font-size: 25px;
 }
