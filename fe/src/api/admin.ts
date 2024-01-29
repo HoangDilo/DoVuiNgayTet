@@ -1,5 +1,5 @@
 import { API_ROUTES, API_URL, HEADER } from "../constants/api.constant";
-import { IQuestion } from "../type/auth";
+import { IQuestion } from "../type/admin";
 
 export const getAllQuestion = async () => {
     const res = await fetch(`${API_URL}${API_ROUTES.getQuestions}`);

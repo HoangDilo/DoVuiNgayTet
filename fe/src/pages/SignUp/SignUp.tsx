@@ -20,8 +20,6 @@ function SignUp() {
     const response = await signup(username, password, linkFB);
     response.json().then((data) => {
       if (response.status === 200) {
-        localStorage.setItem("userData", JSON.stringify(data));
-        console.log("them thanh cong");
         navigate("/login");
       } else {
         console.log("ko thanh cong");
