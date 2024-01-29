@@ -23,7 +23,7 @@ function Input({ value, label, type, icon, setData, onSubmit }: { value: string,
                 <input 
                     type={internalType}
                     id={`input-${label}`}
-                    className={`${icon && 'isIcon'} is${type}`}
+                    className={`${icon && 'isIcon'} is${type} custom-input`}
                     value={value}
                     placeholder={label}
                     onChange={(event) => setData(event.target.value)}

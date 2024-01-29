@@ -1,0 +1,66 @@
+.icon {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+}
+
+.size-16 {
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.size-18 {
+    min-width: 18px;
+    min-height: 18px;
+}
+
+.size-20 {
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.size-24 {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.size-28 {
+    min-width: 28px;
+    min-height: 28px;
+}
+
+
+// ========== icon definations ============ //
+
+.admin {
+    background-image: url('@/assets/svg/admin.svg');
+}
+
+.arrow-right {
+    background-image: url('@/assets/svg/arrowRight.svg');
+}
+
+.detail {
+    background-image: url('@/assets/svg/detail.svg');
+}
+
+.pen {
+    background-image: url('@/assets/svg/pen.svg');
+}
+
+.trash-can {
+    background-image: url('@/assets/svg/trashcan.svg');
+}
+
+.save {
+    background-image: url('@/assets/svg/save.svg');
+}
+
+.x {
+    background-image: url('@/assets/svg/x.svg');
+}
+
+.plus {
+    background-image: url('@/assets/svg/plus.svg');
+}
