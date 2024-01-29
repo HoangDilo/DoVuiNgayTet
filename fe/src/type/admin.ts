@@ -1,11 +1,11 @@
 export interface IAnswer {
-  answerId: number;
+  answerId?: number;
   answerText: string;
   isCorrect: boolean;
 }
 
 export interface IQuestion {
-  questionId: number;
+  questionId?: number;
   questionText: string;
   answerList: [IAnswer, IAnswer, IAnswer, IAnswer];
 }
