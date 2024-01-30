@@ -10,8 +10,12 @@ export default function Admin() {
   const [list, setList] = useState<IQuestion[]>([]);
   const [isAdding, setIsAdding] = useState(false);
 
-  useEffect(() => {
+  const getAllQuestions = () => {
     getAllQuestion().then((data) => setList(data));
+  }
+
+  useEffect(() => {
+    getAllQuestions();
   }, []);
 
   return (
@@ -39,12 +43,12 @@ export default function Admin() {
                   />
                 ))}
             </div>
-            {isAdding && <AddingField isAdding={isAdding} setIsAdding={setIsAdding}/>}
+            {isAdding && <AddingField isAdding={isAdding} setIsAdding={setIsAdding} onAddNew={getAllQuestions}/>}
           </div>
-          <div className={styles["add-new"]} onClick={() => setIsAdding(true)}>
+          {!isAdding && <div className={styles["add-new"]} onClick={() => setIsAdding(true)}>
             Thêm mới
             <div className="plus icon size-16"></div>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

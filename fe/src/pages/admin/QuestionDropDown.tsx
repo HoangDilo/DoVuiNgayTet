@@ -26,7 +26,7 @@ export default function QuestionDropDown({
       localStorage.getItem("username")
         ? (localStorage.getItem("username") as string)
         : "",
-      question.questionId,
+      question.questionId as number,
       questionText
     );
   };
@@ -45,7 +45,7 @@ export default function QuestionDropDown({
       localStorage.getItem("username")
         ? (localStorage.getItem("username") as string)
         : "",
-      question.questionId
+      question.questionId as number
     );
   };
 
@@ -58,6 +58,9 @@ export default function QuestionDropDown({
       inputRef.current?.focus();
     }
   }, [isEditing]);
+
+  console.log(question);
+  
 
   return (
     <div className={styles["question-dropdown"]}>
@@ -86,7 +89,10 @@ export default function QuestionDropDown({
               onClick={() => setIsEditing(true)}
             ></div>
           )}
-          <div className="trash-can size-16 icon" onClick={() => setIsOpenConfirmModal(true)}></div>
+          <div
+            className="trash-can size-16 icon"
+            onClick={() => setIsOpenConfirmModal(true)}
+          ></div>
           <div
             className={`detail size-20 icon`}
             onClick={() => {
@@ -95,7 +101,8 @@ export default function QuestionDropDown({
           ></div>
         </div>
       </div>
-      {isOpenAnswers && <div>Answer</div>}
+      {isOpenAnswers &&
+        question.answers.map((answer) => <div>{answer.answer}</div>)}
       {isOpenConfirmModal && (
         <ConfirmModal
           title={`Xóa câu hỏi!`}
