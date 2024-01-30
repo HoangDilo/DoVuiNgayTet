@@ -73,14 +73,8 @@ export default function AddingField({
   };
 
   useEffect(() => {
-    console.log(addingInputRef.current);
-    
     addingInputRef.current?.focus();
   }, [isAdding]);
-
-  useEffect(() => {
-    console.log(addingQuestion);
-  }, [addingQuestion]);
 
   return (
     <div className={styles["adding-field"]}>

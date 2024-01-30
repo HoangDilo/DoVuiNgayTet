@@ -58,10 +58,7 @@ export default function QuestionDropDown({
       inputRef.current?.focus();
     }
   }, [isEditing]);
-
-  console.log(question);
   
-
   return (
     <div className={styles["question-dropdown"]}>
       <div className={styles["question"]}>

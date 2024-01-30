@@ -1,6 +1,11 @@
 import { API_ROUTES, API_URL, HEADER } from "../constants/api.constant";
 import { IQuestion } from "../type/admin";
 
+export const isAdmin = async (username: string) => {
+  const res = await fetch(`${API_URL}${API_ROUTES.isAdmin}?username=${username}`);
+  return res.status === 200;
+}
+
 export const getAllQuestion = async () => {
   const res = await fetch(`${API_URL}${API_ROUTES.getQuestions}`);
   const data = await res.json();
@@ -8,11 +13,6 @@ export const getAllQuestion = async () => {
 };
 
 export const createQuestion = async (username: string, question: IQuestion) => {
-  console.log({
-    username: username,
-    ...question,
-  });
-
   const res = await fetch(`${API_URL}${API_ROUTES.createQuestion}`, {
     method: "POST",
     headers: HEADER,

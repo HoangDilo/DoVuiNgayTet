@@ -2,20 +2,26 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./AdminPage.module.scss";
 import { IQuestion } from "../../type/admin";
-import { getAllQuestion } from "../../api/admin";
+import { getAllQuestion, isAdmin } from "../../api/admin";
 import QuestionDropDown from "./QuestionDropDown";
 import AddingField from "./AddingField";
+import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
+  const navigate = useNavigate();
+
   const [list, setList] = useState<IQuestion[]>([]);
   const [isAdding, setIsAdding] = useState(false);
 
   const getAllQuestions = () => {
     getAllQuestion().then((data) => setList(data));
-  }
+  };
 
   useEffect(() => {
     getAllQuestions();
+    // isAdmin(localStorage.getItem("username") as string).then((result) => {
+    //   if(!result) navigate('/')
+    // });
   }, []);
 
   return (
@@ -43,12 +49,23 @@ export default function Admin() {
                   />
                 ))}
             </div>
-            {isAdding && <AddingField isAdding={isAdding} setIsAdding={setIsAdding} onAddNew={getAllQuestions}/>}
+            {isAdding && (
+              <AddingField
+                isAdding={isAdding}
+                setIsAdding={setIsAdding}
+                onAddNew={getAllQuestions}
+              />
+            )}
           </div>
-          {!isAdding && <div className={styles["add-new"]} onClick={() => setIsAdding(true)}>
-            Thêm mới
-            <div className="plus icon size-16"></div>
-          </div>}
+          {!isAdding && (
+            <div
+              className={styles["add-new"]}
+              onClick={() => setIsAdding(true)}
+            >
+              Thêm mới
+              <div className="plus icon size-16"></div>
+            </div>
+          )}
         </div>
       </div>
     </div>
