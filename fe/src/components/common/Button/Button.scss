@@ -9,7 +9,7 @@
     padding-left: 8px;
     font-size: 18px;
     padding: 5px;
-    :hover{
+    &:hover{
         box-shadow: 3px 3px 0px #FFC000;
         transform: translate(-1px, -1px);
         cursor: pointer;
