@@ -65,8 +65,8 @@ namespace be.Controllers
             });
         }
 
-        [HttpPost("CheckIsAdmin")]
-        public async Task<ActionResult> CheckIsAdmin([FromBody] UserCheckIsAdminInputDto input)
+        [HttpGet("CheckIsAdmin")]
+        public async Task<ActionResult> CheckIsAdmin([FromQuery] UserCheckIsAdminInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});

@@ -46,6 +46,7 @@ namespace be.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.IsAdmin == false ) return BadRequest(new {message = "User not a admin!"});
+            if (string.IsNullOrWhiteSpace(input.QuestionText)) return BadRequest(new {message = "Invalid Text!"});
             if (input.Answers == null || input.Answers.Count != 4 || input.Answers.Count(a => a.IsCorrect) != 1)
             {
                 return BadRequest(new { message = "Invalid number of answers or incorrect answer count!" });
@@ -117,8 +118,8 @@ namespace be.Controllers
 
             foreach (var q in question)
             {
-                q.AnswerList = await _answerController.AnswerByQuestionId(q.QuestionId);
-                q.AnswerList = q.AnswerList.OrderBy(x => Guid.NewGuid()).ToList();
+                q.Answers = await _answerController.AnswerByQuestionId(q.QuestionId);
+                q.Answers = q.Answers.OrderBy(x => Guid.NewGuid()).ToList();
             }
 
             return question;
