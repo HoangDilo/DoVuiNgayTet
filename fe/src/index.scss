@@ -1,3 +1,34 @@
+@import './styles/icon.scss';
+
 * {
     box-sizing: border-box;
+}
+
+.button-1 {
+    border-radius: 6px;
+    height: 32px;
+    border: none;
+    font-weight: 600;
+    color: white;
+    background: #979797;
+    padding: 0px 24px;
+    cursor: pointer;
+    transition: background 0.2s ease-in;
+    &:hover {
+        background: #666;
+    }
+}
+
+.button-2 {
+    border-radius: 6px;
+    height: 32px;
+    border: none;
+    font-weight: 600;
+    background: none;
+    color: #979797;
+    cursor: pointer;
+    transition: color 0.2s ease-in;
+    &:hover {
+        color: #666;
+    }
 }
