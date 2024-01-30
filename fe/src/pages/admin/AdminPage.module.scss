@@ -17,6 +17,8 @@
   font-weight: 700;
   display: flex;
   align-items: center;
+  margin: 0;
+  margin-bottom: 40px;
   gap: 14px;
   .admin-name {
     font-style: italic;
@@ -41,8 +43,19 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      max-height: 800px;
+      max-height: 420px;
       overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 6px;
+      &::-webkit-scrollbar {
+        width: 8px;
+        padding: 0px 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        width: 6px;
+        background: #979797;
+      }
       .question-dropdown {
         width: 100%;
         display: flex;
