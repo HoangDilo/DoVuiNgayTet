@@ -70,8 +70,8 @@ namespace be.Controllers
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
-            if (user.IsAdmin != false) return BadRequest(new {message = "User is not an admin!"});
-            else return Ok(new {message = "Login successfully"});
+            if (user.IsAdmin == false) return BadRequest(new {message = "User is not an admin!"});
+            else return Ok();
         }
     }
 }
