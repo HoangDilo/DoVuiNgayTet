@@ -25,8 +25,10 @@ export default function HomePage() {
           <div className="home-left-roll"></div>
           <div className={`home-question-container ${!isMounted ? "home-roll-close" : "home-roll-open"}`}>
             <div className="home-questions">
-              {question}
-              Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi?  Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? 
+              <p className="home-question-text">
+                {question}
+                Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi?  Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? 
+              </p>
             </div>
             <div className="home-answers">
               <Button label={`Anh Theng`} type="chit" onSubmit={handleSubmit} />
