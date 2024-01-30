@@ -34,7 +34,7 @@ namespace be.Controllers
 
             foreach (var q in question)
             {
-                q.AnswerList = await _answerController.SearchByQuestionId(q.QuestionId); 
+                q.Answers = await _answerController.SearchByQuestionId(q.QuestionId); 
             }
 
             return question;

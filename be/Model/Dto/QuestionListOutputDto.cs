@@ -9,6 +9,6 @@ namespace be.Model.Dto
     {
         public long QuestionId { get; set; }
         public string QuestionText { get; set; }
-        public List<AnswerListOutputDto> AnswerList { get; set; }
+        public List<AnswerListOutputDto> Answers { get; set; }
     }
 }
