@@ -19,7 +19,7 @@ namespace be.Controllers
         {
             _context = context;
         }
-        [HttpGet("AnswerListByQuestionId")]
+        [NonAction]
         public async Task<List<AnswerListOutputDto>> SearchByQuestionId(long QuestionId)
         {
             var answer = await (from Answer in _context.Answer
@@ -32,13 +32,13 @@ namespace be.Controllers
             }).ToListAsync();
             return answer;
         }
-
+        
         [NonAction]
-        public async Task<List<AnswerListOutputDto>> AnswerByQuestionId(long QuestionId)
+        public async Task<List<AnswerRandomOutputDto>> AnswerByQuestionId(long QuestionId)
         {
             var answer = await (from Answer in _context.Answer
             where Answer.QuestionId == QuestionId
-            select new AnswerListOutputDto()
+            select new AnswerRandomOutputDto()
             {
                 AnswerId = Answer.AnswerId,
                 AnswerText = Answer.AnswerText,

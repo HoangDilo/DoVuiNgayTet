@@ -1,6 +1,7 @@
 export const API_ROUTES = {
     login: 'User/Login',
     register: 'User/Register',
+    isAdmin: 'User/CheckIsAdmin',
     getQuestions: 'Question/QuestionList',
     createQuestion: 'Question/CreateQuestionAndAnswers',
     editQuestion: 'Question/EditQuestion',

@@ -1,18 +1,16 @@
-input{
-    width: 260px;
-    height: 35px;
-    border-radius: 5px;
-    border: solid #FFC000 2px;
-    box-shadow: 2px 2px 0px #FFC000;
-    padding-left: 8px;
-}
-
-input:hover{
-    box-shadow: 3px 3px 0px #FFC000;
+.custom-input {
+  width: 260px;
+  height: 35px;
+  border-radius: 5px;
+  border: solid #ffc000 2px;
+  box-shadow: 2px 2px 0px #ffc000;
+  padding-left: 8px;
+  &:hover {
+    box-shadow: 3px 3px 0px #ffc000;
     transform: translate(-1px, -1px);
+  }
 }
 
-.Input-label{
-    color: white;
+.Input-label {
+  color: white;
 }
-
