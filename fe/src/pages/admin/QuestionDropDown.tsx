@@ -50,7 +50,7 @@ export default function QuestionDropDown({
   };
 
   const handleEditCorrectAnswer = () => {
-    edit
+
   }
 
   useEffect(() => {
