@@ -52,3 +52,17 @@ export const deleteQuestion = async (username: string, questionId: number) => {
   });
   return res;
 };
+
+export const editAnswer = async (username: string, answerId: number, answerText: string, isCorrect: boolean) => {
+  const res= await fetch(`${API_URL}${API_ROUTES.editAnswer}`, {
+    method: 'PUT',
+    headers: HEADER,
+    body: JSON.stringify({
+      username: username,
+      answerId: answerId,
+      answerText: answerText,
+      isCorrect: isCorrect
+    })
+  })
+  return res;
+}

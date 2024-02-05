@@ -88,6 +88,19 @@
             }
           }
         }
+        .answers-list-container {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          width: 100%;
+          margin-top: 12px;
+          padding-left: 12px;
+          .answers {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+        }
       }
     }
   }
@@ -154,15 +167,16 @@
         display: flex;
         gap: 12px;
         align-items: center;
-        .answer-radio {
-            width: 16px;
-            height: 16px;
-            accent-color: #666;
-        }
         .input-question {
           height: 32px;
         }
       }
     }
   }
+}
+
+.answer-radio {
+  width: 16px;
+  height: 16px;
+  accent-color: #666;
 }

@@ -1,6 +1,6 @@
 export interface IAnswer {
   answerId?: number;
-  answer: string;
+  answerText: string;
   isCorrect: boolean;
 }
 

@@ -49,6 +49,10 @@ export default function QuestionDropDown({
     );
   };
 
+  const handleEditCorrectAnswer = () => {
+
+  }
+
   useEffect(() => {
     setQuestionText(question.questionText);
   }, [question]);
@@ -58,7 +62,7 @@ export default function QuestionDropDown({
       inputRef.current?.focus();
     }
   }, [isEditing]);
-  
+
   return (
     <div className={styles["question-dropdown"]}>
       <div className={styles["question"]}>
@@ -98,8 +102,22 @@ export default function QuestionDropDown({
           ></div>
         </div>
       </div>
-      {isOpenAnswers &&
-        question.answers.map((answer) => <div>{answer.answer}</div>)}
+      {isOpenAnswers && (
+        <div className={styles['answers-list-container']}>
+          {question.answers.map((answer) => (
+            <div key={answer.answerId} className={styles["answers"]}>
+              <input
+                type="radio"
+                name={`anwers-list-${question.questionId}`}
+                className={styles["answer-radio"]}
+                defaultChecked={answer.isCorrect}
+                onChange={handleEditCorrectAnswer}
+              />
+              <span className={styles['answer-row']}>{answer.answerText}</span>
+            </div>
+          ))}
+        </div>
+      )}
       {isOpenConfirmModal && (
         <ConfirmModal
           title={`Xóa câu hỏi!`}
