@@ -6,6 +6,7 @@ export const API_ROUTES = {
     createQuestion: 'Question/CreateQuestionAndAnswers',
     editQuestion: 'Question/EditQuestion',
     deleteQuestion: 'Question/DeleteQuestion',
+    editAnswer: 'Answer/EditAnswer',
 }
 
 export const API_URL = import.meta.env.VITE_API_URL

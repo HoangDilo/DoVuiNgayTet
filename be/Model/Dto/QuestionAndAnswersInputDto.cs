@@ -15,7 +15,7 @@ namespace be.Model.Dto
 
     public class AnswerDto
     {
-        public string Answer { get; set; }
+        public string AnswerText { get; set; }
         public bool IsCorrect { get; set; }
     }
 }

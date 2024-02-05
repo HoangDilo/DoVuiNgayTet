@@ -18,19 +18,19 @@ export default function AddingField({
     questionText: "",
     answers: [
       {
-        answer: "",
+        answerText: "",
         isCorrect: false,
       },
       {
-        answer: "",
+        answerText: "",
         isCorrect: false,
       },
       {
-        answer: "",
+        answerText: "",
         isCorrect: false,
       },
       {
-        answer: "",
+        answerText: "",
         isCorrect: false,
       },
     ],
@@ -43,7 +43,7 @@ export default function AddingField({
     index: number
   ) => {
     const prevQuestion = { ...addingQuestion } as IQuestion;
-    prevQuestion.answers[index].answer = event.target.value;
+    prevQuestion.answers[index].answerText = event.target.value;
     setAddingQuestion(prevQuestion);
   };
 

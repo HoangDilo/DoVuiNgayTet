@@ -58,7 +58,7 @@ namespace be.Controllers
                     QuestionText = input.QuestionText,
                     Answers = input.Answers.Select(answer => new Answer
                     {
-                        AnswerText = answer.Answer,
+                        AnswerText = answer.AnswerText,
                         IsCorrect = answer.IsCorrect
                     }).ToList()
                 };
