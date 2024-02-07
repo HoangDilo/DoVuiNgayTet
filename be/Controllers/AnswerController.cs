@@ -52,14 +52,28 @@ namespace be.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.IsAdmin == false ) return BadRequest(new {message = "User is not an admin!"});
-            var answer = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerText == input.AnswerText);
-            if (string.IsNullOrWhiteSpace(input.AnswerText)) return BadRequest(new {message = "Invalid Text!"});
-            else
+            var answers = await _context.Answer
+            .Where(a => a.QuestionId == input.QuestionId)
+            .ToListAsync();
+            foreach (var answer in answers)
             {
-                answer.AnswerText = input.AnswerText;
-                answer.IsCorrect = input.IsCorrect;
-                await _context.SaveChangesAsync();
+                answer.IsCorrect = false;
             }
+            bool foundCorrectAnswer = false;
+            foreach (var answer in answers)
+            {
+                if (answer.AnswerId == input.AnswerId)
+                {
+                    answer.IsCorrect = true;
+                    foundCorrectAnswer = true;
+                    break;
+                }
+            }
+            if (!foundCorrectAnswer)
+            {
+                return BadRequest(new { message = "Answer not found!" });
+            }
+            await _context.SaveChangesAsync();
             return Ok(new {message = "Edit Answer successfully!"});
         }
     }
