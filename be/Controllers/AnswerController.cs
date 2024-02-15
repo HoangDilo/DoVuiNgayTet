@@ -60,6 +60,7 @@ namespace be.Controllers
         var otherAnswers = await _context.Answer
             .Where(a => a.QuestionId == answerToEdit.QuestionId)
             .ToListAsync();
+        answerToEdit.AnswerText = input.AnswerText;
         if (answerToEdit.IsCorrect == false && input.IsCorrect == false)
         {
             answerToEdit.AnswerText = input.AnswerText;
@@ -73,17 +74,14 @@ namespace be.Controllers
                     if(answer.IsCorrect == false && input.IsCorrect == true)
                     {
                         answer.IsCorrect = input.IsCorrect;
-                        answer.AnswerText = input.AnswerText;
                     }
                     else if (answer.IsCorrect == false && input.IsCorrect == false)
                     {
                         answer.IsCorrect = input.IsCorrect;
-                        answer.AnswerText = input.AnswerText;
                     }
                     else if (answer.IsCorrect == true && input.IsCorrect == true)
                     {
                         answer.IsCorrect = input.IsCorrect;
-                        answer.AnswerText = input.AnswerText;
                     }
                     else if (answer.IsCorrect == true && input.IsCorrect == false)
                     {
