@@ -49,42 +49,55 @@ namespace be.Controllers
         [HttpPut("EditAnswer")]
         public async Task<ActionResult> EditAnswer([FromBody] AnswerEditInputDto input)
         {
-            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "User not found!"});
-            if (user.IsAdmin == false ) return BadRequest(new {message = "User is not an admin!"});
-            var answerToEdit = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerId == input.AnswerId);
-            if (answerToEdit == null)
-            {
-                return BadRequest(new {message = "Answer not found!"});
-            }
-            var otherAnswers = await _context.Answer
+        var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
+        if (user == null) return BadRequest(new { message = "User not found!" });
+        if (user.IsAdmin == false) return BadRequest(new { message = "User is not an admin!" });
+        var answerToEdit = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerId == input.AnswerId);
+        if (answerToEdit == null)
+        {
+            return BadRequest(new { message = "Answer not found!" });
+        }
+        var otherAnswers = await _context.Answer
             .Where(a => a.QuestionId == answerToEdit.QuestionId)
             .ToListAsync();
-            foreach (var answer in otherAnswers)
-            {
-                answer.IsCorrect = false;
-            }
-            bool foundCorrectAnswer = false;
+        if (answerToEdit.IsCorrect == false && input.IsCorrect == false)
+        {
+            answerToEdit.AnswerText = input.AnswerText;
+        }
+        else if (answerToEdit.IsCorrect == false && input.IsCorrect == true)
+        {
             foreach (var answer in otherAnswers)
             {
                 if (answer.AnswerId == input.AnswerId)
                 {
-                    answer.IsCorrect = true;
-                    foundCorrectAnswer = true;
-                    break;
+                    if(answer.IsCorrect == false && input.IsCorrect == true)
+                    {
+                        answer.IsCorrect = input.IsCorrect;
+                        answer.AnswerText = input.AnswerText;
+                    }
+                    else if (answer.IsCorrect == false && input.IsCorrect == false)
+                    {
+                        answer.IsCorrect = input.IsCorrect;
+                        answer.AnswerText = input.AnswerText;
+                    }
+                    else if (answer.IsCorrect == true && input.IsCorrect == true)
+                    {
+                        answer.IsCorrect = input.IsCorrect;
+                        answer.AnswerText = input.AnswerText;
+                    }
+                    else if (answer.IsCorrect == true && input.IsCorrect == false)
+                    {
+                        return BadRequest(new { message = "Invalid" });
+                    }
+                }
+                else
+                {
+                    answer.IsCorrect = false;
                 }
             }
-            if (!foundCorrectAnswer)
-            {
-                return BadRequest(new { message = "Answer not found!" });
-            }
-            if (string.IsNullOrWhiteSpace(input.AnswerText)) return BadRequest(new {message = "Invalid Text!"});
-            else
-            {
-                answerToEdit.AnswerText = input.AnswerText;
-            }
-            await _context.SaveChangesAsync();
-            return Ok(new {message = "Edit Answer successfully!"});
+        }
+        await _context.SaveChangesAsync();
+        return Ok(new { message = "Edit Answer successfully!"});
         }
     }
 }
