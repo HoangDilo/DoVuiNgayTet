@@ -1,7 +1,11 @@
 @import '@/styles/variables.scss';
 
 .home-background{
+    position: relative;
     background-image: url($background);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
     display: flex;

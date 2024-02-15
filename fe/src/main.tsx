@@ -13,7 +13,7 @@ import SignUp from "./pages/SignUp/SignUp.tsx";
 import Admin from "./pages/admin/index.tsx";
 import HomePage from "./pages/home/index.tsx";
 
-import AuthLayout from "./layouts/AuthLayout.tsx";
+import AuthLayout from "./layouts/Auth/AuthLayout.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

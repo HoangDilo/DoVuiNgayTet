@@ -29,7 +29,8 @@ function Login() {
           setIsNavigated(true);
         }, 750);
         setTimeout(() => {
-          navigate("/");
+          if(!data.isAdmin) navigate("/");
+          else navigate('/admin')
         }, 1500);
       }
     });
