@@ -9,6 +9,7 @@ import Input from "../../components/common/Input/Input";
 import Button from "../../components/common/Button/Button";
 
 import "./Login.scss";
+import { isAdmin } from "../../api/admin";
 
 function Login() {
   const navigate = useNavigate();
@@ -49,6 +50,19 @@ function Login() {
     return () => {
       clearTimeout(timeout);
     };
+  }, []);
+
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    if (username) {
+      isAdmin(username).then((rs) => {
+        if (rs) {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      });
+    }
   }, []);
 
   return (
