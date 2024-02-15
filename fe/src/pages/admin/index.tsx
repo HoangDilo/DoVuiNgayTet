@@ -19,9 +19,6 @@ export default function Admin() {
 
   useEffect(() => {
     getAllQuestions();
-    // isAdmin(localStorage.getItem("username") as string).then((result) => {
-    //   if(!result) navigate('/')
-    // });
   }, []);
 
   return (
