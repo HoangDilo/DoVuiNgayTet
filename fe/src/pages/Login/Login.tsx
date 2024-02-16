@@ -23,8 +23,8 @@ function Login() {
   const handleSubmit = async () => {
     const response = await login(username, password);
     response.json().then((data) => {
-      // if (response.status === 200) {
-        // localStorage.setItem("username", data.username);
+      if (response.status === 200) {
+        localStorage.setItem("username", data.username);
         setIsMounted(false);
         setTimeout(() => {
           setIsNavigated(true);
@@ -33,7 +33,7 @@ function Login() {
           if (!data.isAdmin) navigate("/");
           else navigate("/admin");
         }, 1500);
-      // }
+      }
     });
   };
 
