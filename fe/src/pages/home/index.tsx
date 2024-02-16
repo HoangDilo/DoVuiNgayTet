@@ -39,9 +39,9 @@ export default function HomePage() {
               !isMounted ? "home-roll-close" : "home-roll-open"
             }`}
           >
-            <div className="home-questions">
+            <span className="home-questions">
               {questions[currentIndex].questionText}
-            </div>
+            </span>
             <div className="home-answers">
               {[...Array(4).keys()].map(item => 
                 <Button key={item} label={questions[currentIndex].answers[item].answerText} type="chit" onSubmit={handleSubmit} />
