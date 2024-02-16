@@ -28,6 +28,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    filter: drop-shadow(0px 0px 18px #ffe10098);
 }
 
 .home-roll{
@@ -41,8 +42,8 @@
     height: 100px;
     background-size: cover;
     position: absolute;
-    transform: rotate(90deg);
-    right: -345px;
+    transform: rotate(90deg) translateX(2px);
+    right: -347px;
 }
 
 .home-right-roll{
@@ -51,8 +52,8 @@
     height: 100px;
     background-size: cover;
     position: absolute;
-    transform: rotate(270deg);
-    left: -345px;
+    transform: rotate(90deg) translateX(2px) scaleY(-1);
+    left: -346px;
 }
 
 .home-question-container{

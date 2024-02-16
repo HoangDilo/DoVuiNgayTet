@@ -51,6 +51,14 @@
     filter: drop-shadow(3px 3px 10px #00000090);
 }
 
+.fade-out-left {
+    animation: fade-out-left 1s ease;
+}
+
+.fade-out-right {
+    animation: fade-out-right 1s ease;
+}
+
 @keyframes fade-to-right {
     from {
         opacity: 0;
@@ -68,5 +76,25 @@
     } to {
         opacity: 1;
         right: 0;
+    }
+}
+
+@keyframes fade-out-left {
+    from {
+        opacity: 1;
+        left: 0;
+    } to {
+        opacity: 0;
+        left: -30px;
+    }
+}
+
+@keyframes fade-out-right {
+    from {
+        opacity: 1;
+        right: 0;
+    } to {
+        opacity: 0;
+        right: -30px;
     }
 }
