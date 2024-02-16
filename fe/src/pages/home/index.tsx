@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react'
-import './HomePage.scss'
-import Button from '../../components/common/Button/Button'
+import { useState, useEffect } from "react";
+import "./HomePage.scss";
+import Button from "../../components/common/Button/Button";
+import { getRandomQuestion } from "../../api/game";
+import { IQuestion } from "../../type/admin";
 
 export default function HomePage() {
-  const [isMounted, setIsMounted] = useState(false)
-  const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState([])
+  const [isMounted, setIsMounted] = useState(false);
+  const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const [answer, setAnswer] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -17,27 +20,37 @@ export default function HomePage() {
     };
   }, []);
 
-  const handleSubmit = () => { }
+  useEffect(() => {
+    getRandomQuestion(localStorage.getItem("username") as string).then(
+      (data) => {
+        setQuestions(data);
+      }
+    );
+  }, []);
+
+  const handleSubmit = () => {};
   return (
     <div className="home-background">
       <div className="home-roll">
         <div className="home-question-container-wrapper">
           <div className="home-left-roll"></div>
-          <div className={`home-question-container ${!isMounted ? "home-roll-close" : "home-roll-open"}`}>
+          {!!questions.length && <div
+            className={`home-question-container ${
+              !isMounted ? "home-roll-close" : "home-roll-open"
+            }`}
+          >
             <div className="home-questions">
-              {question}
-              Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi?  Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? Anh nao dep trai oach xa lach dang cap vcl nhin phat xuat luon nhat tren the gioi? 
+              {questions[currentIndex].questionText}
             </div>
             <div className="home-answers">
-              <Button label={`Anh Theng`} type="chit" onSubmit={handleSubmit} />
-              <Button label={`Anh Hoeng`} type="chit" onSubmit={handleSubmit} />
-              <Button label={`Anh Juan`} type="chit" onSubmit={handleSubmit} />
-              <Button label={`Anh Then`} type="chit" onSubmit={handleSubmit} />
+              {[...Array(4).keys()].map(item => 
+                <Button key={item} label={questions[currentIndex].answers[item].answerText} type="chit" onSubmit={handleSubmit} />
+                )}
             </div>
-          </div>
+          </div>}
           <div className="home-right-roll"></div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -2,7 +2,17 @@ import React from "react";
 
 import styles from "./Modal.module.scss";
 
-export default function ConfirmModal({ title, content, onAccept, setIsOpen }) {
+export default function ConfirmModal({
+  title,
+  content,
+  onAccept,
+  setIsOpen,
+}: {
+  title: string;
+  content: string;
+  onAccept: () => void;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <div
       className={styles["confirm-modal-screen"]}
