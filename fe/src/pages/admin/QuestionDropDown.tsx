@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { IQuestion } from "../../type/admin";
+import { IAnswer, IQuestion } from "../../type/admin";
 
 import styles from "./AdminPage.module.scss";
-import { deleteQuestion, editQuestion } from "../../api/admin";
+import {
+  deleteQuestion,
+  editAnswer,
+  editQuestion,
+  getAllQuestion,
+} from "../../api/admin";
 import ConfirmModal from "../../components/common/Modal/ConfirmModal";
 
 export default function QuestionDropDown({
@@ -15,10 +20,14 @@ export default function QuestionDropDown({
 }) {
   const [isOpenAnswers, setIsOpenAnswer] = useState(false);
   const [questionText, setQuestionText] = useState("");
+  const [answersInternal, setAnswersInternal] = useState<
+    [IAnswer, IAnswer, IAnswer, IAnswer] | null
+  >(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isOpenConfirmModal, setIsOpenConfirmModal] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const editingAnswerIndex = useRef<number>(-1);
 
   const handleDoneEditing = () => {
     setIsEditing(false);
@@ -49,12 +58,37 @@ export default function QuestionDropDown({
     );
   };
 
-  const handleEditCorrectAnswer = () => {
+  const handleEditCorrectAnswer = async (answerId: number) => {
+    const resEdit = await editAnswer(
+      localStorage.getItem("username") as string,
+      answerId,
+      question.answers.find((as) => as.answerId === answerId)
+        ?.answerText as string,
+      true
+    );
+    if (resEdit.status === 200) {
+      getAllQuestion().then((data) => setListQuestion(data));
+    }
+  };
 
-  }
+  const handleChangeAnswerText = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    answerIndex: number
+  ) => {
+    if (answersInternal) {
+      console.log('riel');
+      console.log(answerIndex);
+      
+      editingAnswerIndex.current = answerIndex;
+      const prevAnswers = [...answersInternal] as typeof answersInternal;
+      prevAnswers[answerIndex].answerText = event.target.value;
+      setAnswersInternal(prevAnswers);
+    }
+  };
 
   useEffect(() => {
     setQuestionText(question.questionText);
+    setAnswersInternal(question.answers);
   }, [question]);
 
   useEffect(() => {
@@ -62,6 +96,22 @@ export default function QuestionDropDown({
       inputRef.current?.focus();
     }
   }, [isEditing]);
+
+  useEffect(() => {
+    if (editingAnswerIndex.current >= 0 && answersInternal) {
+      const timeout = setTimeout(() => {
+        editAnswer(
+          localStorage.getItem("username") as string,
+          answersInternal[editingAnswerIndex.current as number]
+            .answerId as number,
+          answersInternal[editingAnswerIndex.current as number].answerText,
+          answersInternal[editingAnswerIndex.current as number].isCorrect
+        );
+      }, 300);
+
+      return () => clearTimeout(timeout)
+    }
+  }, [answersInternal]);
 
   return (
     <div className={styles["question-dropdown"]}>
@@ -103,19 +153,27 @@ export default function QuestionDropDown({
         </div>
       </div>
       {isOpenAnswers && (
-        <div className={styles['answers-list-container']}>
-          {question.answers.map((answer) => (
-            <div key={answer.answerId} className={styles["answers"]}>
-              <input
-                type="radio"
-                name={`anwers-list-${question.questionId}`}
-                className={styles["answer-radio"]}
-                defaultChecked={answer.isCorrect}
-                onChange={handleEditCorrectAnswer}
-              />
-              <span className={styles['answer-row']}>{answer.answerText}</span>
-            </div>
-          ))}
+        <div className={styles["answers-list-container"]}>
+          {answersInternal &&
+            answersInternal.map((answer, index) => (
+              <div key={answer.answerId} className={styles["answers"]}>
+                <input
+                  type="radio"
+                  name={`anwers-list-${question.questionId}`}
+                  className={styles["answer-radio"]}
+                  defaultChecked={answer.isCorrect}
+                  onChange={() =>
+                    handleEditCorrectAnswer(answer.answerId as number)
+                  }
+                />
+                <input
+                  type="text"
+                  className={styles["answer-row"]}
+                  value={answer.answerText}
+                  onChange={(event) => handleChangeAnswerText(event, index)}
+                />
+              </div>
+            ))}
         </div>
       )}
       {isOpenConfirmModal && (

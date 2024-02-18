@@ -18,10 +18,13 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    getAllQuestions();
-    // isAdmin(localStorage.getItem("username") as string).then((result) => {
-    //   if(!result) navigate('/')
-    // });
+    isAdmin(localStorage.getItem("username") as string).then((response) => {
+      if (response) {
+        getAllQuestions();
+      } else {
+        navigate("/login");
+      }
+    });
   }, []);
 
   return (

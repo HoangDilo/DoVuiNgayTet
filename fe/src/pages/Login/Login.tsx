@@ -2,21 +2,23 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { login } from "../../api/auth";
+import { isAdmin } from "../../api/admin";
 
 import { ILoginResponse } from "../../type/auth";
 
 import Input from "../../components/common/Input/Input";
 import Button from "../../components/common/Button/Button";
+import { AuthLayoutContext } from "../../layouts/Auth/AuthLayout";
 
 import "./Login.scss";
 
 function Login() {
   const navigate = useNavigate();
+  const { isNavigated, setIsNavigated } = useContext(AuthLayoutContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isMounted, setIsMounted] = useState(false);
-  const [isNavigated, setIsNavigated] = useState(false);
 
   const handleSubmit = async () => {
     const response = await login(username, password);
@@ -28,7 +30,8 @@ function Login() {
           setIsNavigated(true);
         }, 750);
         setTimeout(() => {
-          navigate("/");
+          if (!data.isAdmin) navigate("/");
+          else navigate("/admin");
         }, 1500);
       }
     });
@@ -49,6 +52,19 @@ function Login() {
     return () => {
       clearTimeout(timeout);
     };
+  }, []);
+
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    if (username) {
+      isAdmin(username).then((rs) => {
+        if (rs) {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      });
+    }
   }, []);
 
   return (
