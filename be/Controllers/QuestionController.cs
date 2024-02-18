@@ -125,7 +125,7 @@ namespace be.Controllers
             return question;
         }
 
-        [HttpGet("Question")]
+        [HttpPost("Question")]
         public async Task<ActionResult> Question([FromQuery] QuestionAnsweredInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
@@ -135,14 +135,13 @@ namespace be.Controllers
             var answer = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerId == input.AnswerId);
             if (answer == null) return BadRequest(new {message = "Answer not found!"});
             if (answer.QuestionId != input.QuestionId) return BadRequest(new {message = "Answer not found!"});
-            bool isCorrectAnswer = answer.IsCorrect;
-            if (isCorrectAnswer)
+            if (answer.IsCorrect == true)
             {
-                return Ok(new { message = "Correct answer!" });
+                return Ok();
             }
             else
             {
-                return Ok(new { message = "Incorrect answer!" });
+                return BadRequest();
             }
         }
     }
