@@ -1,0 +1,12 @@
+.lixi-item {
+  position: absolute;
+  top: 0;
+  font-size: 24px;
+  cursor: pointer;
+  transform: translateY(0vh);
+  transition: transform 12s linear;
+}
+
+.fall {
+  transform: translateY(100vh);
+}
