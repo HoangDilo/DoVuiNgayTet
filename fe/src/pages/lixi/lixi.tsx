@@ -5,6 +5,7 @@ import "./lixi.scss";
 export default function Lixi() {
   const [lixi, setLixi] = useState<{ id: number; x: number }[]>([]);
   const isGenerating = useRef(true);
+  
 
   const generateRandomX = () => Math.random() * window.innerWidth;
 
@@ -19,15 +20,14 @@ export default function Lixi() {
   };
 
   useEffect(() => {
-        const interval = setInterval(() => {
-            generateNewLixi();
-          }, 1000);
-      
-          return () => {
-            clearInterval(interval);
-          };
-  }, [lixi]);
+    const interval = setInterval(() => {
+      generateNewLixi();
+    }, 1000);
 
+    return () => {
+      clearInterval(interval);
+    };
+  }, [lixi]);
 
   return (
     <div className="lixi-background">
