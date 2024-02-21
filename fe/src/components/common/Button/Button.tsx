@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './Button.scss'
 
-function Button({ label, type, onSubmit }: { label: string, type: string, onSubmit: () => void }) {
+function Button({ label, onSubmit }: { label: string, onSubmit: () => void }) {
 
     return (
         <>

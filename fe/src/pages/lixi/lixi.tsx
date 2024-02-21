@@ -16,11 +16,11 @@ export default function Lixi() {
   const generateRandomX = () => Math.random() * window.innerWidth;
 
   const randomLixi = () => {
-    return Math.floor(Math.random() * 6);
+    return Math.floor(Math.random() * 7);
   };
 
   const randomSize = () => {
-    return Math.floor(Math.random() * 20) + 40;
+    return Math.floor(Math.random() * 30) + 30;
   };
 
   const randomDirection = () => {
