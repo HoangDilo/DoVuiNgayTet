@@ -5,8 +5,31 @@
   cursor: pointer;
   transform: translateY(0vh);
   transition: transform 12s linear;
+  
 }
 
 .fall {
   transform: translateY(100vh);
+}
+
+.lixi-texture{
+  object-fit: contain;
+}
+
+.spin-right{
+  animation: spinning-right 20s linear infinite;
+}
+
+.spin-left{
+  animation: spinning-left 20s linear infinite;
+}
+
+@keyframes spinning-right{
+  from {rotate: 0deg;}
+  to {rotate: 360deg;}
+}
+
+@keyframes spinning-left{
+  from {rotate: 360deg;}
+  to {rotate: 0deg;}
 }
