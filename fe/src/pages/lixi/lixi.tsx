@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LixiItem from "./lixi-item/lixi-item";
 import "./lixi.scss";
 
@@ -12,7 +12,6 @@ export default function Lixi() {
       direction: boolean;
     }[]
   >([]);
-  const isGenerating = useRef(true);
 
   const generateRandomX = () => Math.random() * window.innerWidth;
 
@@ -63,9 +62,7 @@ export default function Lixi() {
         <LixiItem
           key={id}
           x={x}
-          onClick={() => {
-            console.log("click lixi");
-          }}
+          onClick={() => {}}
           onTransitionEnd={() => handleDeleteLixi(id)}
           lixiIndex={lixiIndex}
           size={size}

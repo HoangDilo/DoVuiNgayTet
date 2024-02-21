@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import "./HomePage.scss";
 import Button from "../../components/common/Button/Button";
-import { getRandomQuestion } from "../../api/game";
+import { answerQuestion, getRandomQuestion } from "../../api/game";
 import { IQuestion } from "../../type/admin";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+  const navigate = useNavigate()
+
   const [isMounted, setIsMounted] = useState(false);
   const [questions, setQuestions] = useState<IQuestion[]>([]);
   const [answer, setAnswer] = useState([]);
@@ -28,26 +31,49 @@ export default function HomePage() {
     );
   }, []);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (index: number) => {
+    const res = await answerQuestion(
+      localStorage.getItem("username") as string,
+      questions[currentIndex].questionId as number,
+      questions[currentIndex].answers[index].answerId as number
+    );
+    if(res.status === 200) {
+      if(currentIndex < 2) {
+        setCurrentIndex(currentIndex + 1);
+      } else if (currentIndex == 2) {
+        navigate('/lixi')
+      }
+    } else {
+      alert("May thua roi")
+    }
+  };
+
   return (
     <div className="home-background">
       <div className="home-roll">
         <div className="home-question-container-wrapper">
           <div className="home-left-roll"></div>
-          {!!questions.length && <div
-            className={`home-question-container ${
-              !isMounted ? "home-roll-close" : "home-roll-open"
-            }`}
-          >
-            <span className="home-questions">
-              {questions[currentIndex].questionText}
-            </span>
-            <div className="home-answers">
-              {[...Array(4).keys()].map(item => 
-                <Button key={item} label={questions[currentIndex].answers[item].answerText} type="chit" onSubmit={handleSubmit} />
-                )}
+          {!!questions.length && (
+            <div
+              className={`home-question-container ${
+                !isMounted ? "home-roll-close" : "home-roll-open"
+              }`}
+            >
+              <span className="home-questions">
+                {questions[currentIndex].questionText}
+              </span>
+              <div className="home-answers">
+                {[...Array(4).keys()].map((item) => (
+                  <Button
+                    key={item}
+                    label={questions[currentIndex].answers[item].answerText}
+                    type="chit"
+                    onSubmit={() => handleSubmit(item)}
+                  />
+                ))}
+              </div>
             </div>
-          </div>}
+          )}
           <div className="home-right-roll"></div>
         </div>
       </div>
