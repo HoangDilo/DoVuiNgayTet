@@ -32,7 +32,8 @@ export default function LixiItem(props: LixiItemProps) {
         className={`lixi-texture ${direction ? 'spin-right' : 'spin-left'}`} 
         src={Lixi[lixiIndex]} 
         alt="bucactao" 
-        style={{width: `${size}px`}} />
+        style={{width: `${size}px`}} 
+        />
     </div>
   );
 }

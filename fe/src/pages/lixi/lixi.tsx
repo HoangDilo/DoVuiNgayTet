@@ -25,8 +25,8 @@ export default function Lixi() {
   };
 
   const randomDirection = () => {
-    return !!Math.floor(Math.random()*2)
-  }
+    return !!Math.floor(Math.random() * 2);
+  };
 
   const generateNewLixi = () => {
     const newLixi = [
@@ -36,7 +36,7 @@ export default function Lixi() {
         x: generateRandomX(),
         lixiIndex: randomLixi(),
         size: randomSize(),
-        direction: randomDirection()
+        direction: randomDirection(),
       },
     ];
     setLixi(newLixi);
@@ -63,7 +63,9 @@ export default function Lixi() {
         <LixiItem
           key={id}
           x={x}
-          onClick={() => {}}
+          onClick={() => {
+            console.log("click lixi");
+          }}
           onTransitionEnd={() => handleDeleteLixi(id)}
           lixiIndex={lixiIndex}
           size={size}
