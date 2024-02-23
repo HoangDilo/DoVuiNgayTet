@@ -1,0 +1,36 @@
+.lixi-open-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 10;
+}
+
+.lixi-envelop {
+  width: 360px;
+  cursor: pointer;
+  &:hover {
+    scale: 1.01;
+  }
+  animation: pop-up 1.25s ease;
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+  }
+  69% {
+    opacity: 0;
+  } 70% {
+    opacity: 0;
+    scale: 0.7;
+  }
+  90% {
+    opacity: 1;
+    scale: 1.05;
+  } 100% {
+    scale: 1;
+  }
+}

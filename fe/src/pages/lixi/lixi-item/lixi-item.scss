@@ -2,10 +2,8 @@
   position: absolute;
   top: 0;
   font-size: 24px;
-  cursor: pointer;
   transform: translateY(0vh);
   transition: transform 12s linear;
-  
 }
 
 .fall {
@@ -14,6 +12,15 @@
 
 .lixi-texture{
   object-fit: contain;
+  cursor: pointer;
+}
+
+.spin-right.fade-out {
+  animation: spinning-right 30s linear infinite, fade-out 750ms ease;
+}
+
+.spin-left.fade-out {
+  animation: spinning-left 25s linear infinite, fade-out 750ms ease;
 }
 
 .spin-right{
@@ -32,4 +39,14 @@
 @keyframes spinning-left{
   from {rotate: 360deg;}
   to {rotate: 0deg;}
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    scale: 1;
+  } to {
+    opacity: 0;
+    scale: 1.1;
+  }
 }

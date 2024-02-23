@@ -4,17 +4,19 @@ import Lixi from "@/constants/material.lixi.ts";
 
 interface LixiItemProps {
   x: number;
-  onClick: () => void;
+  onClick?: () => void;
   onTransitionEnd: () => void;
-  lixiIndex: number
-  size: number
-  direction: boolean
+  lixiIndex: number;
+  size: number;
+  direction: boolean;
+  isChosen?: boolean;
 }
 
 export default function LixiItem(props: LixiItemProps) {
-  const { x, onClick, onTransitionEnd, lixiIndex, size, direction } = props;
+  const { x, onClick, onTransitionEnd, lixiIndex, size, direction, isChosen } =
+    props;
   const [isFalling, setIsFalling] = useState(false);
-  
+
   useEffect(() => {
     setTimeout(() => {
       setIsFalling(true);
@@ -28,12 +30,16 @@ export default function LixiItem(props: LixiItemProps) {
       onClick={onClick}
       onTransitionEnd={onTransitionEnd}
     >
-      <img 
-        className={`lixi-texture ${direction ? 'spin-right' : 'spin-left'}`} 
-        src={Lixi[lixiIndex]} 
-        alt="bucactao" 
-        style={{width: `${size}px`}} 
-        />
+      <img
+        className={`lixi-texture ${
+          direction
+            ? `spin-right ${isChosen && "fade-out"}`
+            : `spin-left ${isChosen && "fade-out"}`
+        }`}
+        src={Lixi[lixiIndex]}
+        style={{ width: `${size}px` }}
+        draggable={false}
+      />
     </div>
   );
 }
