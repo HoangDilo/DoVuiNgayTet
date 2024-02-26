@@ -14,6 +14,8 @@ import Admin from "./pages/admin/index.tsx";
 import HomePage from "./pages/home/index.tsx";
 
 import AuthLayout from "./layouts/Auth/AuthLayout.tsx";
+import Lixi from "./pages/lixi/lixi.tsx";
+import BestWishPage from "./pages/best-wish/index.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +26,8 @@ const router = createBrowserRouter(
         <Route path="/signup" element={<SignUp />} />
       </Route>
       <Route path="/admin" element={<Admin />} />
+      <Route path="/lixi" element={<Lixi />} />
+      <Route path="best-wish" element={<BestWishPage />}/>
     </Route>
   )
 );

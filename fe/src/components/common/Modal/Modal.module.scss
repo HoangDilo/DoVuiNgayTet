@@ -1,54 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+
 .confirm-modal-screen {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    background-color: #00000030;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: #00000030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .container {
+    padding: 24px;
+    border-radius: 8px;
+    background-color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    .container {
-        padding: 24px;
-        border-radius: 8px;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        position: relative;
-        animation: pop-up 0.3s;
-        .title {
-            font-weight: 600;
-            font-size: 20px;
-            margin: 0;
-        }
-        .content {
-            padding: 0px 8px;
-        }
-        .buttons {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            gap: 10px;
-        }
-        .close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            cursor: pointer;
-        }
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    animation: pop-up 0.3s;
+    .title {
+      font-weight: 600;
+      font-size: 20px;
+      margin: 0;
     }
+    .content {
+      padding: 0px 8px;
+    }
+    .buttons {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+.notifymodal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .main-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px;
+    gap: 14px;
+    background-color: rgb(177, 0, 0);
+    border-radius: 8px;
+    border: 2px solid #ffc000;
+    box-shadow: 1px 2px 8px #000000bd;
+    color: #ffc000;
+    animation: pop-up 0.3s ease;
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      .title {
+        margin: 0;
+        font-weight: 600;
+        font-size: 24px;
+      }
+      .content {
+        font-size: 20px;
+      }
+    }
+  }
 }
 
 @keyframes pop-up {
-    0% {
-        scale: 0.7;
-        opacity: 0;
-    } 80% {
-        scale: 1.05;
-        opacity: 1;
-    } 100% {
-        scale: 1;
-    }
+  0% {
+    scale: 0.7;
+    opacity: 0;
+  }
+  80% {
+    scale: 1.05;
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+  }
 }
