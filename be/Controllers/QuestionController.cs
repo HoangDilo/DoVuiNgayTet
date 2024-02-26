@@ -135,12 +135,17 @@ namespace be.Controllers
             var answer = await _context.Answer.SingleOrDefaultAsync(a => a.AnswerId == input.AnswerId);
             if (answer == null) return BadRequest(new {message = "Answer not found!"});
             if (answer.QuestionId != input.QuestionId) return BadRequest(new {message = "Answer not found!"});
+            user.Money = 0;
             if (answer.IsCorrect == true)
             {
+                user.Money++;
+                await _context.SaveChangesAsync();
                 return Ok();
             }
             else
             {
+                user.Money++;
+                await _context.SaveChangesAsync();
                 return BadRequest();
             }
         }
