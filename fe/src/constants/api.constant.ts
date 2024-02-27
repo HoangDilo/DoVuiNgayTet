@@ -9,6 +9,7 @@ export const API_ROUTES = {
     editAnswer: 'Answer/EditAnswer',
     getRandomQuestions: 'Question/GetRandomQuestion',
     answerQuestion: 'Question/Question',
+    randomLixi: 'Lixi/Lixi',
 }
 
 export const API_URL = import.meta.env.VITE_API_URL

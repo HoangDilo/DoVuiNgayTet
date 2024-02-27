@@ -70,7 +70,9 @@ export default function HomePage() {
       if (currentIndex < questions.length - 1) {
         setCurrentIndex(currentIndex + 1);
       } else if (currentIndex == questions.length - 1) {
-        navigate("/lixi");
+        navigate("/lixi", {
+          replace: true,
+        });
       }
     }
   };
@@ -91,7 +93,11 @@ export default function HomePage() {
               </span>
               <div className="home-answers">
                 {[...Array(4).keys()].map((item) => (
-                  <span onClick={() => handleSubmit(item)} key={item} className="answer-options">
+                  <span
+                    onClick={() => handleSubmit(item)}
+                    key={item}
+                    className="answer-options"
+                  >
                     {questions[currentIndex].answers[item].answerText}
                   </span>
                 ))}
