@@ -71,9 +71,9 @@ namespace be.Controllers
                 {
                     randomMoney = 500000;
                 }
-                // user.Money = randomMoney;
-                // await _context.SaveChangesAsync();
-                return Ok(new { money = randomMoney, index = randomIndex });
+                user.Money = randomMoney;
+                await _context.SaveChangesAsync();
+                return Ok(new { money = randomMoney });
             }
         }
     }
