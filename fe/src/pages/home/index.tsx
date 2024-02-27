@@ -65,7 +65,7 @@ export default function HomePage() {
 
   const handleClickOK = () => {
     setIsOpenModal(false);
-    if (isLose) navigate("/best-wish");
+    if (isLose) navigate("/chuc-tet");
     else {
       if (currentIndex < questions.length - 1) {
         setCurrentIndex(currentIndex + 1);
