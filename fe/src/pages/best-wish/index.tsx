@@ -31,7 +31,7 @@ export default function BestWishPage() {
   useEffect(() => {
     const interval = setInterval(() => {
       generateNewHoa();
-    }, 2000);
+    }, 1000);
     return () => {
       clearInterval(interval);
     };

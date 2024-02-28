@@ -14,7 +14,7 @@ export default function HoaItem(props: HoaItemProps) {
     useEffect(() => {
         setTimeout(() => {
           setIsFalling(true)
-        }, 1000)
+        }, 10)
       }, [])
 
   return (
