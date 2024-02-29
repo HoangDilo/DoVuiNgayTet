@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./AdminPage.module.scss";
 import { IQuestion } from "../../type/admin";

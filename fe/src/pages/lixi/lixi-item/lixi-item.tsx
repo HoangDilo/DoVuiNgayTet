@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./lixi-item.scss";
 import Lixi from "@/constants/material.lixi.ts";
 

@@ -1,6 +1,6 @@
 import "./SignUp.scss";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Input from "../../components/common/Input/Input";
 import { signup } from "../../api/auth";
 import Button from "../../components/common/Button/Button";
@@ -18,7 +18,7 @@ function SignUp() {
       alert("mat khau phai nhu nhau");
     }
     const response = await signup(username, password, linkFB);
-    response.json().then((data) => {
+    response.json().then(() => {
       if (response.status === 200) {
         navigate("/login");
       } else {
@@ -88,7 +88,7 @@ function SignUp() {
                 setData={setRepeatPassword}
                 onSubmit={handleSubmit}
               />
-              <Button label="Sign Up" type="chit" onSubmit={handleSubmit}/>
+              <Button label="Sign Up" onSubmit={handleSubmit}/>
               <div className="Login-to-signup">
                 Already had an account?{" "}
                 <span onClick={handleNavigateLogin}>Login here!</span>

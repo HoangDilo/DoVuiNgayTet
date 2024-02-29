@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./HomePage.scss";
-import Button from "../../components/common/Button/Button";
 import { answerQuestion, getRandomQuestion } from "../../api/game";
 import { IQuestion } from "../../type/admin";
 import { useNavigate } from "react-router-dom";

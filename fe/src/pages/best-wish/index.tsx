@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./BestWish.scss";
 import HoaItem from "./hoa-item";
 

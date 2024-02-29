@@ -1,10 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { login } from "../../api/auth";
 import { isAdmin } from "../../api/admin";
-
-import { ILoginResponse } from "../../type/auth";
 
 import Input from "../../components/common/Input/Input";
 import Button from "../../components/common/Button/Button";
@@ -100,7 +98,7 @@ function Login() {
                 onSubmit={handleSubmit}
               />
               <div className="Login-forgot-pass">Forgot password?</div>
-              <Button label="Login" type="chit" onSubmit={handleSubmit} />
+              <Button label="Login" onSubmit={handleSubmit} />
               <div className="Login-to-signup">
                 Dont have an account?{" "}
                 <span className="Login-navigate" onClick={handleNavigateSignUp}>

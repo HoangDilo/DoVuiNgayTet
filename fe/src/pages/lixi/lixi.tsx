@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LixiItem from "./lixi-item/lixi-item";
 import LixiOpen from "./lixi-open/lixi-open";
 import "./lixi.scss";

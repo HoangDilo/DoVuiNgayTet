@@ -3,7 +3,6 @@ import './Input.scss'
 
 function Input({ value, label, type, icon, setData, onSubmit }: { value: string, label: string, type: string, icon: string, setData: (data: string) => void, onSubmit: () => void }) {
     const [internalType, setInternalType] = useState("")
-    const [internalErrorMessage, setInternalErrorMessage] = useState("")
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key == "Enter") {
