@@ -40,9 +40,9 @@ export default function BestWishPage() {
   return (
     <div className="best-wish-background">
       <div className="best-wish-text">
-        <div className="best-wish-text-top">sech sech sech</div>
-        <div className="best-wish-text-mid">skibidi dom dom yes yes</div>
-        <div className="best-wish-text-bot">sech sech sech</div>
+        <div className="best-wish-text-top">Chúc tết ý nghĩa:</div>
+        <div className="best-wish-text-mid">Chúc bạn khỏe</div>
+        <div className="best-wish-text-bot">Follow page DuRiu để cập nhật các thông tin mới nhất về ngành IT</div>
       </div>
       <div className="hoa-roi">
         <div className="hoa">
