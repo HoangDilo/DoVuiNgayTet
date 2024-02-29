@@ -37,6 +37,12 @@ export default function HomePage() {
     );
   }, []);
 
+  useEffect(() => {
+    if(!localStorage.getItem('username')) {
+      navigate('/login');
+    }
+  }, [])
+
   const handleSubmit = async (index: number) => {
     if (questions.length) {
       const res = await answerQuestion(

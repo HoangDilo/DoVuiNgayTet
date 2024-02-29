@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./BestWish.scss";
 import HoaItem from "./hoa-item";
 
@@ -9,6 +9,8 @@ export default function BestWishPage() {
       x: number;
     }[]
   >([]);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const generateRandomX = () => Math.random() * window.innerWidth;
 
@@ -28,6 +30,10 @@ export default function BestWishPage() {
     setHoa(updatedHoa);
   };
 
+  const handlePlayAudio = () => {
+    audioRef.current?.play();
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       generateNewHoa();
@@ -42,7 +48,10 @@ export default function BestWishPage() {
       <div className="best-wish-text">
         <div className="best-wish-text-top">Chúc tết ý nghĩa:</div>
         <div className="best-wish-text-mid">Chúc bạn khỏe</div>
-        <div className="best-wish-text-bot">Follow page DuRiu để cập nhật các thông tin mới nhất về ngành IT</div>
+        <div className="best-wish-text-bot">
+          Follow page DuRiu để cập nhật các thông tin mới nhất về ngành IT
+        </div>
+        <span onClick={handlePlayAudio} className="play-button">Mở nhạc Tết</span>
       </div>
       <div className="hoa-roi">
         <div className="hoa">
@@ -55,6 +64,9 @@ export default function BestWishPage() {
           ))}
         </div>
       </div>
+      <audio ref={audioRef} className="audio">
+        <source src="/conbietxuannaymechotinjuan.mp3" />
+      </audio>
     </div>
   );
 }
