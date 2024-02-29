@@ -64,7 +64,7 @@ export default function BestWishPage() {
           ))}
         </div>
       </div>
-      <audio ref={audioRef} className="audio">
+      <audio autoPlay ref={audioRef} className="audio">
         <source src="/conbietxuannaymechotinjuan.mp3" />
       </audio>
     </div>
