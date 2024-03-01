@@ -80,6 +80,7 @@ body{
     position: absolute;
     top: -40px;
     left: -77px;
+    z-index: 10;
 }
 .Login-bottom-roll{
     background-image: url($cuonso);
@@ -90,6 +91,7 @@ body{
     position: absolute;
     bottom: -40px;
     left: -77px;
+    z-index: 10;
 }
 
 .Login-roll-close{
