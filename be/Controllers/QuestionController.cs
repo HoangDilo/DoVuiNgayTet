@@ -108,7 +108,7 @@ namespace be.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             var question = await _context.Question
             .OrderBy(x => Guid.NewGuid())
-            .Take(30)
+            .Take(100)
             .Select(question => new QuestionRandomOutputDto
             {
                 QuestionId = question.QuestionId,
