@@ -20,3 +20,11 @@ export const answerQuestion = async (
   );
   return res;
 };
+
+export const getRandomLixi = async (username: string) => {
+  const res = await fetch(`${API_URL}${API_ROUTES.randomLixi}?Username=${username}`, {
+    method: 'POST'
+  });
+  const data = await res.json();
+  return data;
+}

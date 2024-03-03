@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/admin" element={<Admin />} />
       <Route path="/lixi" element={<Lixi />} />
-      <Route path="best-wish" element={<BestWishPage />}/>
+      <Route path="/chuc-tet" element={<BestWishPage />}/>
     </Route>
   )
 );
